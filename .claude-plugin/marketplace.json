@@ -1,18 +1,18 @@
 {
-  "name": "ako-tools-public",
+  "name": "mcpshop.ir",
   "version": "2.0.0",
-  "description": "AKO public plugins",
+  "description": "مارکت‌پلیس پلاگین‌های کلود",
   "owner": { "name": "Kani" },
   "plugins": [
     {
       "name": "ako-azure",
       "source": "./ako-azure",
-      "description": "Azure DevOps pull requests/git-ops: list/review PRs, comments, reviewers (Tiberriver256 MCP server)"
+      "description": "کنترل کامل اژر دواپس با امکان دسترسی به کدها و کارها"
     },
     {
       "name": "ako-price",
       "source": "./ako-price",
-      "description": "baha24 price report (skill-only)"
+      "description": "فیمت لحظه‌ای سکه امامی، دلار و طلا به همراه نوسان قیمت"
     }
   ]
 }
