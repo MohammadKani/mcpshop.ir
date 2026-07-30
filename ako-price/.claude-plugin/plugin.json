@@ -1,5 +1,6 @@
 {
   "name": "ako-price",
+  "displayName": "قیمت سکه و دلار",
   "version": "1.0.0",
   "description": "Fetch and report today's Iranian dollar, gold, and coin (سکه) prices from baha24.com in a fixed, standardized format. Skill-only plugin — no MCP server.",
   "author": {

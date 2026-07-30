@@ -1,5 +1,6 @@
 {
   "name": "ako-azure",
+  "displayName": "Azure DevOps",
   "version": "0.1.0",
   "description": "PR review and git-ops monitoring for Azure DevOps (Repos, Pull Requests, reviewers, comments) via the Tiberriver256 MCP server. Complements ako-ado, which covers Work Items and Boards only.",
   "author": {
