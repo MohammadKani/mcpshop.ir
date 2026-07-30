@@ -5,12 +5,12 @@
   "owner": { "name": "Kani" },
   "plugins": [
     {
-      "name": "AKO Azure DevOps",
+      "name": "ako-azure",
       "source": "./ako-azure",
       "description": "Azure DevOps pull requests/git-ops: list/review PRs, comments, reviewers (Tiberriver256 MCP server)"
     },
     {
-      "name": "قیمت سکه و دلار",
+      "name": "ako-price",
       "source": "./ako-price",
       "description": "baha24 price report (skill-only)"
     }
