@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "ako-azure": {
+      "command": "npx",
+      "args": [
+        "-y", "dotenv-cli",
+        "-e", "${CLAUDE_PLUGIN_ROOT}/.env",
+        "--",
+        "npx", "-y", "@tiberriver256/mcp-server-azure-devops"
+      ]
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "ako-tools-public",
+  "version": "2.0.0",
+  "description": "AKO public plugins",
+  "owner": { "name": "Kani" },
+  "plugins": [
+    {
+      "name": "ako-azure",
+      "source": "./ako-azure",
+      "description": "Azure DevOps pull requests/git-ops: list/review PRs, comments, reviewers (Tiberriver256 MCP server)"
+    },
+    {
+      "name": "ako-price",
+      "source": "./ako-price",
+      "description": "baha24 price report (skill-only)"
+    }
+  ]
+}
