@@ -4,17 +4,24 @@ Pull request review and git-ops monitoring for Azure DevOps, using the [Tiberriv
 
 ## Scope
 
-This plugin covers **Repos and Pull Requests only** — listing PRs, reading diffs and comments, posting review comments, managing reviewers, and updating PR status.
 
-It does **not** cover:
-- Work Items, Epics, Boards, Sprints — that's the separate `ako-ado` plugin
-- Static/security scanning (SAST/SCA) — pair this with a dedicated scanner (e.g. a Semgrep or Snyk MCP) if you want real vulnerability detection; this plugin only reads/comments through Azure DevOps, it does not scan code for CVEs
+It can use any tool exposed by the Azure DevOps MCP server, including:
+- Projects
+- Repositories and file content/tree
+- Branch and commit operations
+- Pull requests (list, inspect, comment, update, checks)
+- Work items (list/get/create/update/link)
+- Search (code, wiki, work items)
+- Pipelines (list, run, logs, timeline, artifacts)
+- Wiki operations
+
+It does **not** do static/security scanning (SAST/SCA). Pair with a scanner MCP (for example Semgrep or Snyk) if you need real vulnerability analysis.
 
 ## Requirements
 
 - Your Azure DevOps instance must be reachable from the machine running Claude Desktop — for an on-prem Azure DevOps Server behind VPN, connect the VPN **before** launching Claude Desktop so the MCP server process inherits the network route.
 - Node.js / npx available on the machine.
-- A Personal Access Token (PAT) with at minimum **Code (Read)** scope. Add **Code (Read & Write)** if you want this plugin to post comments or change PR status, not just read.
+- A Personal Access Token (PAT) with enough permissions for the operations you want. For read-only usage, start with read scopes. For create/update actions (PR comments, work item changes, pipeline triggers, commits), grant the corresponding write scopes.
 
 ## Setup — where to put your credentials
 
@@ -37,19 +44,21 @@ AZURE_DEVOPS_DEFAULT_PROJECT=YourProject
 
 | Variable | Required | Notes |
 |---|---|---|
-| `AZURE_DEVOPS_ORG_URL` | Yes | Your ADO Server/collection URL. No default is baked in — every installer sets their own. |
-| `AZURE_DEVOPS_PAT` | Yes | Personal Access Token. On-prem Azure DevOps Server only supports PAT auth (not Azure Identity/CLI login). |
-| `AZURE_DEVOPS_DEFAULT_PROJECT` | Recommended | Used automatically when a request doesn't name a project. You can still mention a different project by name in a request and it will be used instead of this default. |
-| `AZURE_DEVOPS_AUTH_METHOD` | Yes | Keep as `pat`. |
+| `AZURE_DEVOPS_ORG_URL` | Yes | Your ADO Server/collection URL. No default is baked in; each installer sets their own. |
+| `AZURE_DEVOPS_PAT` | Yes | Personal Access Token. On-prem Azure DevOps Server supports PAT auth. |
+| `AZURE_DEVOPS_DEFAULT_PROJECT` | Recommended | Used automatically when a request doesn't name a project. Explicit project names in user requests still take priority. |
+| `AZURE_DEVOPS_AUTH_METHOD` | Yes | Keep as `pat` for Azure DevOps Server (on-prem). |
 
 Each colleague who installs this plugin creates their **own** local `.env` with their **own** PAT — never share a `.env` file or a PAT between users, since actions taken through this plugin are attributed to whichever PAT is configured.
 
 ## Testing locally
 
 After creating `.env`, restart Claude Desktop (with VPN connected) and try:
-- "List active pull requests" → should return PRs from the default project
-- "Show me PR #<id>" → should return details/diff for a specific PR
-- "What comments are on PR #<id>?" → should return the thread
-- "Add a comment on PR #<id> saying ..." → should post and confirm the PR ID
+- "List projects" → should return accessible projects
+- "List repositories in <project>" → should return repos
+- "List active pull requests" → should return PRs from the default or specified project
+- "Get work item <id>" → should return work item details
+- "List pipelines" → should return pipeline definitions
+- "Search code for <term> in <project>" → should return matches
 
-If these fail with an auth error, check the PAT scope and that `.env` was saved in the right folder. If they time out, check the VPN route was active when Claude Desktop started the server.
+If these fail with an auth error, check PAT permissions and that `.env` was saved in the right folder. If they time out, check the VPN route was active when Claude Desktop started the server.
