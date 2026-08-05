@@ -2,7 +2,7 @@
   "name": "mcpshop.ir",
   "version": "2.0.0",
   "description": "مارکت‌پلیس پلاگین‌های کلود",
-  "owner": { "name": "Kani" },
+  "owner": { "name": "Mohammad Kani" },
   "plugins": [
     {
       "name": "ako-azure",

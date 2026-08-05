@@ -2,6 +2,7 @@
   "mcpServers": {
     "ako-azure": {
       "command": "npx",
+      "cwd": "${CLAUDE_PLUGIN_ROOT}/server",
       "args": [
         "-y", "dotenv-cli",
         "-e", "${CLAUDE_PLUGIN_ROOT}/.env",

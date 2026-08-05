@@ -1,7 +1,7 @@
 {
   "name": "ako-price",
   "displayName": "قیمت سکه و دلار",
-  "version": "1.2.0",
+  "version": "1.2.4",
   "description": "فیمت لحظه‌ای سکه امامی، دلار و طلا به همراه نوسان قیمت",
   "author": {
     "name": "Mohammad Kani"
